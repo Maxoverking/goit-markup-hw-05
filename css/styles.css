@@ -576,11 +576,13 @@ ul{
 }
 
 .project-link:hover .thumb-text,
-.project-link:hover .cards-thumb::before{
-    opacity: 1;
-    transform: translateY(-100%);
+.project-link:hover .cards-thumb::before,
+.project-link:focus .thumb-text,
+.project-link:focus .cards-thumb::before{
     
+    transform: translateY(-100%);   
 }
+
 
 
 .cards-thumb::before  {
@@ -590,23 +592,27 @@ ul{
     width: 100%;
     height: 100%;
     background: rgba(33, 150, 243, 0.9);
-
+    
     transition: transform 250ms var(--cubic);
 }
     
 .thumb-text {
     position: absolute;
     content: "";
-    top: 80%;
+
+    top: 100%;
+    width: 100%;
+    height: 100%;
     padding-top: 62px;
     padding-left: 0px;
-
+    transform: translateY(4%);
+    
     font-size: 18px;
     line-height: 1.55;
     letter-spacing: 0.03em;
     color: var(--white-color);
     /* color: var(--black-color); */
-    opacity: 0;
+    
     transition: transform 250ms var(--cubic);
 }
 
