@@ -10,6 +10,7 @@
     --basic-text-color: #757575;
     --section-order-service:#2F303A;
     --icon-background:#F5F4FA;
+    --cubic:cubic-bezier(0.4, 0, 0.2, 1)
 }
 /* Боди CSS */
 
@@ -29,7 +30,7 @@ body{
     margin-right: auto;
     padding-left: 15px;
     padding-right: 15px;
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
 }
 
 
@@ -70,12 +71,14 @@ a{
 .logo .black:hover,
 .logo .black:focus
 .logo .black:active{
-    color: var(--blue-color);  
+    color: var(--blue-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo .white:hover,
 .logo .white:focus{
     color: var(--blue-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul{
@@ -84,13 +87,11 @@ ul{
 
 .basic-header{
     display: flex;
-    align-items: center; 
-    
+    align-items: center;   
 }
-.basic-linc{
-    display: block;
-    margin: 0%;   
-}
+
+
+
 .basic-linck{
     display: block;
     margin: 0%;
@@ -108,7 +109,6 @@ ul{
 }
 .basic-linck li:not(:last-child){
     margin-right: 50px;
-
 }
 /*  Конверт и телефон */
 .linck {
@@ -134,10 +134,26 @@ ul{
 .basic-linc{
     display: flex;
     padding-left: 0%;
+    margin: 0%;
 }
 
+.basic-li {
+    position: relative;
+}
+
+.header-line .linc.current::after {
+    position: absolute;
+    content: "";
+    top: 44px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--blue-color);
+    border-radius: 2px;
+
+}
 .basic-linc .basic-li{ 
-    padding: 4px 25px;
+    margin: 4px 25px;
 }
 .basic-linc .basic-li:last-child{
     padding-right: 0px;
@@ -158,10 +174,12 @@ ul{
 .linc:hover, 
 .linc:focus,
 .linc:active{
-    color: var(--blue-color);    
+    color: var(--blue-color); 
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .linc.current{
     color: var(--blue-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -179,13 +197,14 @@ ul{
 .basic-linck .linck:focus,
 .basic-linck .linck:active{
     color: var(--blue-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
- 
+
 /* Cекции h1 h2 */
 
 .section-color-black{
     max-width: 100%;
-    height: 100%;
+    max-height: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -237,7 +256,8 @@ ul{
     letter-spacing: 0.06em;
     border:  #2196F3;
     border-radius: 4px;
-    text-align: center;   
+    text-align: center;  
+
 }
 .button:hover,
 .button:focus,
@@ -246,6 +266,7 @@ ul{
     color: var(--white-color);
     cursor: pointer;
     opacity: .7;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
 }
 /* Кнопки портфолио */
@@ -286,7 +307,7 @@ ul{
     color: var(--white-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 /* Картинки */
 .section-image{
@@ -475,6 +496,7 @@ ul{
 .links:focus{
     background-color: var(--blue-color);
     fill: var(--white-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Проект */
@@ -490,6 +512,8 @@ ul{
 .project-description {
     margin: 0px;
     padding: 20px 24px;
+    
+    
 }
 .project-item{
     margin: 0px 30px 30px 0px;
@@ -517,6 +541,7 @@ ul{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
         0px 4px 4px rgba(0, 0, 0, 0.06),
         1px 4px 6px rgba(0, 0, 0, 0.16);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project-title{
@@ -541,52 +566,49 @@ ul{
     display: block;
     max-width: 100%;
     height: auto;
-
-}
-.product:hover .thumb-text {
-    opacity: 1;
+    
 }
 
 .cards-thumb {
     position: relative;
+    overflow: hidden;
 
 }
 
-.cards-thumb::before {
-    display: block;
+.project-link:hover .thumb-text,
+.project-link:hover .cards-thumb::before{
+    opacity: 1;
+    transform: translateY(-100%);
+    
+}
+
+
+.cards-thumb::before  {
     position: absolute;
     content: "";
+    top: 100%;
     width: 100%;
     height: 100%;
     background: rgba(33, 150, 243, 0.9);
-    opacity: 0;
 
+    transition: transform 250ms var(--cubic);
 }
-
+    
 .thumb-text {
-    display: flex;
-
     position: absolute;
     content: "";
-    top: 62px;
-    right: 24px;
-    left: 24px;
+    top: 80%;
+    padding-top: 62px;
     padding-left: 0px;
 
     font-size: 18px;
     line-height: 1.55;
     letter-spacing: 0.03em;
     color: var(--white-color);
-
+    /* color: var(--black-color); */
     opacity: 0;
-
+    transition: transform 250ms var(--cubic);
 }
-
-.cards-thumb:hover:before {
-    opacity: 1;
-}
-
-
 
 /* Постоянные клиенты */
 .common-clients{
@@ -634,6 +656,7 @@ ul{
 .clients:focus{
     border-color: var(--blue-color);
     fill: var(--blue-color);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -726,7 +749,7 @@ ul{
 .links-foo:hover,
 .links-foo:focus {
     background-color: var(--blue-color);
-    
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -738,11 +761,14 @@ ul{
     height: 100%;
 
     background: rgba(0, 0, 0, 0.2);
-    
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .overlay.is-hidden{
     opacity: 0;
     pointer-events: none;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
 }
 .modal{
     position: absolute;
@@ -755,9 +781,6 @@ ul{
     transform: translate(-50%, -50%);
     background: var(--white-color);
     
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
-    0px 1px 1px rgba(0, 0, 0, 0.14), 
-    0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
 .modal-button {
@@ -774,9 +797,14 @@ ul{
     background-color: var(--white-color);
 } 
 .modal-button-icon{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 5px;
+    margin-left: -1px;
 } 
+.modal-button:hover,
+.modal-button:focus{
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
+            0px 1px 1px rgba(0, 0, 0, 0.14),
+            0px 2px 1px rgba(0, 0, 0, 0.2);
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
