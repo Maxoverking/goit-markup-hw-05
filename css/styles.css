@@ -323,10 +323,9 @@ ul{
     margin: auto;
     padding-left: 0px;
     display: flex;
+    gap: 30px
 }
-.section-picture .image:not(:last-child){
-    margin-right: 30px;
-}
+
 .image {
     position: relative;
 }
